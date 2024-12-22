@@ -1,3 +1,6 @@
+struct hex8
+    
+end
 
 # Function to assign cell IDs to each Hexahedron
 function assign_cell_ids(elements::Vector{Ferrite.Hexahedron})
@@ -58,8 +61,10 @@ function create_facetsets(face_ids_by_type::Dict{String,OrderedDict{GeometryBasi
 end
 
 
-function cogrid(::Type{hex8}, E, V, F, Fb, CFb_type)
+function cogrid(::Type{hex8}, E::Vector{Hex8{Int64}}, V::Vector{Point{3, Float64}},
+     F::Vector{QuadFace{Int64}}, Fb::Vector{QuadFace{Int64}}, CFb_type::Vector{Int64})
     # Convert elements (E) to Ferrite Hexahedrons
+
     cells = [Ferrite.Hexahedron((e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8])) for e in E]
 
     # Convert vertices (V) to Ferrite Nodes
