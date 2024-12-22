@@ -3,13 +3,12 @@ module Ferromodo
 using Ferrite
 using OrderedCollections
 using Statistics
+using GeometryBasics
 
 
-export Hello
-export assign_face_ids
-export get_face_ids
-export create_facetindex_set
+export assign_cell_ids
+export find_cell_ids_for_faces
+export create_facetsets
 export cogrid
-# Write your package code here.
-
+include("utils.jl")
 end
