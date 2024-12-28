@@ -3,9 +3,8 @@ using GLMakie
 using GeometryBasics
 using Ferrite
 using Comodo
-using OrderedCollections
 using PUPM
-
+using Ferromodo
 #=
 Finite Element programming for 2D plane stress 
 Plate under tension
@@ -80,4 +79,4 @@ result = fem_solver(par)
 u = result.u
 
 display(maximum(u)) ## 0.04761904761904768
-display(minimum(u)) ## -0.04761904761904768
+display(minimum(u)) ## -0.014285714285714318
