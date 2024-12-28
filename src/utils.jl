@@ -177,7 +177,7 @@ function cogrid(::Type{quad4plate}, F1, V1)
     return Grid(cells, nodes, facetsets=facetsets)
 end
 
-function cogrid(::Type{tri3plate}, F1::Vector{TriangleFace{Int64}}, V1::Vector{Point{3, Float64}})
+function cogrid(::Type{tri3plate}, F1, V1)
     cells = [Ferrite.Triangle((e[1], e[2], e[3])) for e in F1]
     nodes = Ferrite.Node{2,Float64}[Ferrite.Node((v[1], v[2])) for v in V1]
     # The generated grid lacks the facetsets for the boundaries, so we add them by using Ferrite's addfacetset!. 
