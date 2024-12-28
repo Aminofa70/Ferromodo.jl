@@ -1,9 +1,6 @@
-struct hex8
-
-end
-struct quad4plate
-
-end
+struct hex8 end
+struct quad4plate end
+struct tri3plate end
 # Function to assign cell IDs to each Hexahedron
 function assign_cell_ids(elements::Vector{Ferrite.Hexahedron})
     return OrderedDict(element => idx for (idx, element) in enumerate(elements))
@@ -178,4 +175,12 @@ function cogrid(::Type{quad4plate}, F1, V1)
     
     facetsets = create_facetsets_quad4(face_ids_by_type)
     return Grid(cells, nodes, facetsets=facetsets)
+end
+
+function cogrid(::Type{tri3plate}, F1::Vector{TriangleFace{Int64}}, V1::Vector{Point{3, Float64}})
+    cells = [Ferrite.Triangle((e[1], e[2], e[3])) for e in F1]
+    nodes = Ferrite.Node{2,Float64}[Ferrite.Node((v[1], v[2])) for v in V1]
+    # The generated grid lacks the facetsets for the boundaries, so we add them by using Ferrite's addfacetset!. 
+    return Grid(cells, nodes)
+   
 end

@@ -8,7 +8,7 @@ using GeometryBasics
 ###############################################
 
 export hex8
-export quad4plate
+export quad4plate, tri3plate
 export assign_cell_ids
 export find_cell_ids_for_faces
 export create_facetsets
